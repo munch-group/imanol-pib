@@ -28,9 +28,9 @@ comments:
 lightbox: true
 
 book:
-  repo-url: "https://github.com/munch-group/munch-group-project"
+  repo-url: "https://github.com/munch-group/imanol-pib"
   repo-actions: [edit, issue, source]  
-  title: "munch-group-project"
+  title: "imanol-pib"
   author: "Joanna Doh"  
   sidebar:
     collapse-level: 1
