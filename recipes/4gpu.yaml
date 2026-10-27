@@ -1,0 +1,47 @@
+# Local Paths
+dataset_name: "/faststorage/project/imanol-pib/people/imanolhpc/data/genomes-brassicales-balanced-v1"
+tokenizer_name: "/faststorage/project/imanol-pib/people/imanolhpc/data/tokenizer-gpn-brassicales"
+output_dir: "/faststorage/project/imanol-pib/people/imanolhpc/gpn/outputs/gpn_4gpu_scratch"
+
+# GPN Arquitecture (with checkpoint)
+config_overrides: encoder=convnet,num_hidden_layers=25,hidden_size=512,intermediate_size=2048,first_kernel_size=9,rest_kernel_size=5,dilation_cycle=8,dilation_max=9999
+do_train: true
+do_eval: true
+max_steps: 120000
+resume_from_checkpoint: /faststorage/project/imanol-pib/people/imanolhpc/gpn/outputs/gpn_4gpu_scratch/checkpoint-70000
+
+# Global Batch Size: 4 GPUs * 64 * 8 = 2048
+per_device_train_batch_size: 64
+per_device_eval_batch_size: 64
+gradient_accumulation_steps: 8
+map_batch_size: 2048
+
+mlm_probability: 0.15
+soft_masked_loss_weight_train: 0.1
+soft_masked_loss_weight_evaluation: 0.0
+learning_rate: 0.001
+lr_scheduler_type: constant_with_warmup
+warmup_steps: 1000
+weight_decay: 0.01
+optim: adamw_torch
+seed: 42
+
+# Stability 4 GPUs
+dataloader_num_workers: 0
+remove_unused_columns: false
+prediction_loss_only: true
+eval_strategy: steps
+eval_steps: 10000
+save_strategy: steps
+save_steps: 5000
+save_total_limit: 2
+logging_steps: 10
+fp16: true
+fp16_full_eval: true
+bf16: false
+bf16_full_eval: false
+torch_compile: false
+
+ddp_find_unused_parameters: false
+ddp_timeout: 1800
+report_to: []

@@ -1,0 +1,48 @@
+# Local Paths
+dataset_name: "/faststorage/project/imanol-pib/people/imanolhpc/data/human_intervals"
+tokenizer_name: "/faststorage/project/imanol-pib/people/imanolhpc/data/tokenizer-gpn-brassicales"
+output_dir: "/faststorage/project/imanol-pib/people/imanolhpc/gpn/outputs/gpn_human_4gpu"
+
+# GPN Architecture
+config_overrides: "encoder=convnet,num_hidden_layers=25,hidden_size=512,intermediate_size=2048,first_kernel_size=9,rest_kernel_size=9,dilation_cycle=6"
+
+# Training Parameters
+do_train: true
+do_eval: false
+max_steps: 120000
+
+# Global Batch Size: 4 GPUs * 64 * 8 = 2048
+per_device_train_batch_size: 64
+per_device_eval_batch_size: 64
+gradient_accumulation_steps: 8
+map_batch_size: 2048
+
+# Hyperparameters and Masked Probability
+mlm_probability: 0.15
+soft_masked_loss_weight_train: 0.1
+soft_masked_loss_weight_evaluation: 0.0
+learning_rate: 0.001
+lr_scheduler_type: constant_with_warmup
+warmup_steps: 1000
+weight_decay: 0.01
+optim: adamw_torch
+seed: 42
+
+# Saving and Logging
+save_strategy: steps
+save_steps: 5000
+save_total_limit: 5
+logging_steps: 10
+
+# Stability for 4 GPUs
+dataloader_num_workers: 0
+remove_unused_columns: false
+prediction_loss_only: true
+fp16: true
+fp16_full_eval: true
+bf16: false
+bf16_full_eval: false
+torch_compile: false
+
+ddp_find_unused_parameters: false
+ddp_timeout: 180
