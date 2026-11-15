@@ -2,7 +2,9 @@
 # Variant Effect Prediction (VEP) across Individual Human Genomes with GPN
 
 ## Overview
-This repository contains the code, configuration files, and analysis workflows for evaluating the impact of individual genetic backgrounds (local sequence context and epistasis) on **Genomic Pre-trained Network (GPN)** variant effect predictions. We compare Log-Likelihood Ratio (LLR) scores computed on personalized haplotype genomes from the 1000 Genomes Project (starting with YRI individual `NA19238`) against the standard `GRCh38` reference assembly.
+This repository contains the code, configuration files, and analysis workflows for evaluating the impact of individual genetic
+backgrounds  on **Genomic Pre-trained Network (GPN)** variant effect predictions. We compare Log-Likelihood Ratio (LLR) scores 
+computed on personalized haplotype genomes from the 1000 Genomes Project against the standard `GRCh38` reference assembly.
 
 ---
 
