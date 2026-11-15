@@ -21,7 +21,7 @@ Because multi-GPU training runs on `gpu-l40s` nodes can encounter PCIe peer-to-p
 * `TRANSFORMERS_OFFLINE=1` & `HF_DATASETS_OFFLINE=1`: Forces Hugging Face libraries to load local datasets and tokenizers without attempting external network requests from compute nodes (this helps against job terminations due to disconnections).
 
 ### Submitting a Training Job
-```bash
+bash
 sbatch scripts/human_train.slurm
 
 ## 2. YAML Configuration Breakdown (recipes/gpn_training/*.yaml)
