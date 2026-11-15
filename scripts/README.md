@@ -83,3 +83,14 @@ How to Resume: Set `resume_from_checkpoint` in the .yaml file to the latest save
 `resume_from_checkpoint: /faststorage/project/imanol-pib/people/imanolhpc/gpn/outputs/gpn_4gpu_scratch/checkpoint-70000`
 
 
+## 3. Data Processing Scripts
+
+The dataset used for Brassicales training exists in HuggingFace ready for use, but training on other species requires preparing 
+the dataset for the conditions required by GPN. As stated by the authors: "Any replacement dataset_name must identify a local or
+Hugging Face dataset with train and validation splits and a fixed-length seq string in every row."
+
+* `prepare_human_intervals.py`: Takes as input the reference human genome and creates training and validation splits in Parquet
+   format, with `seq_length = 512`.
+
+
+ 
