@@ -2,7 +2,7 @@
 # ---
 # title: GWF workflow
 # execute:
-#   eval: false
+#   enabled: false
 # ---
 
 # %% [markdown]
